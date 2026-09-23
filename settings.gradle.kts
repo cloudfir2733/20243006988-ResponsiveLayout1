@@ -24,3 +24,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "WORK1ResponsiveApp"
 include(":app")
+include(":constraintlayout")
