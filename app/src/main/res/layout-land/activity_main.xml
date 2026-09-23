@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Practical 2 - Part 1: Orientation qualifier (landscape).
+    This file is loaded automatically by Android when the device is rotated to landscape
+    (res/layout-land/activity_main.xml).
+    Portrait uses a strict vertical stack, so the landscape version re-arranges the same
+    views horizontally to make use of the wider screen: the title and the description sit
+    side by side, and the button bar keeps the buttons centred instead of stretching them
+    across the whole width.
+    Only match_parent / wrap_content / 0dp + weight / dp + sp are used - no hard-coded sizes.
+-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -18,17 +28,39 @@
         android:textColor="#ffffff"
         android:textSize="20sp" />
 
-    <!-- 1/6：响应式布局标题 -->
-    <TextView
-        android:id="@+id/responsiveTitleTextView"
+    <!-- 3/6：横向主区域 —— 标题与内容左右并排（竖向布局改成横向） -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="#FFFFFF"
-        android:gravity="center"
-        android:text="Responsive Layout 1"
-        android:textColor="#000000"
-        android:textSize="20sp" />
+        android:layout_weight="3"
+        android:orientation="horizontal">
+
+        <!-- 左侧：响应式布局标题 -->
+        <TextView
+            android:id="@+id/responsiveTitleTextView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="Responsive Layout 1"
+            android:textColor="#000000"
+            android:textSize="24sp" />
+
+        <!-- 右侧：中间可变区域内容 -->
+        <TextView
+            android:id="@+id/contentTextView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="Android Application"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp" />
+
+    </LinearLayout>
 
     <!-- 1/6：四色等宽块分组（组内仍是水平等分） -->
     <LinearLayout
@@ -43,51 +75,44 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#FF0000"
+            android:gravity="center"
             android:text="This"
             android:textColor="#FFFFFF"
-            android:gravity="center" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#0000FF"
+            android:gravity="center"
             android:text="is"
             android:textColor="#FFFFFF"
-            android:gravity="center" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#800080"
+            android:gravity="center"
             android:text="my"
             android:textColor="#FFFFFF"
-            android:gravity="center" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#FFFF00"
+            android:gravity="center"
             android:text="first"
             android:textColor="#FFFFFF"
-            android:gravity="center" />
+            android:textSize="18sp" />
 
     </LinearLayout>
 
-    <!-- 2/6：中间可变区域 -->
-    <TextView
-        android:id="@+id/contentTextView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:gravity="center"
-        android:text="Android Application"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp" />
-
-    <!-- 1/6：底部按钮分组（组内两按钮水平等分） -->
+    <!-- 1/6：底部按钮分组（两侧用可伸缩空白，避免按钮在宽屏上被拉得过长） -->
     <LinearLayout
         android:id="@+id/buttonBarLayout"
         android:layout_width="match_parent"
@@ -98,25 +123,35 @@
         android:gravity="center_vertical"
         android:padding="16dp">
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
         <Button
             android:id="@+id/changeButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:layout_marginEnd="8dp"
+            android:backgroundTint="#7B68EE"
             android:text="Change"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#7B68EE" />
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/cancelButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:layout_marginStart="8dp"
+            android:backgroundTint="#7B68EE"
             android:text="Cancel"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#7B68EE" />
+            android:textColor="#FFFFFF" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
     </LinearLayout>
 
